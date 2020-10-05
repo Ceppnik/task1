@@ -18,7 +18,7 @@ const runAction = (options) => {
     if (options.input) {
         fs.stat(options.input, (err) => {
             if (err) {
-                err.code = 'ENOENT' ? console.error(`Input file ${options.input} not found`) : console.error(err.message)
+                err.code === 'ENOENT' ? console.error(`Input file ${options.input} not found`) : console.error(err.message)
                 process.exit(1)
             }
         })
@@ -26,7 +26,7 @@ const runAction = (options) => {
         if (options.output) {
             fs.stat(options.output, (err) => {
                 if (err) {
-                    err.code = 'ENOENT' ? console.error(`Output file ${options.output} not found`) : console.error(err.message)
+                    err.code === 'ENOENT' ? console.error(`Output file ${options.output} not found`) : console.error(err.message)
                     process.exit(1)
                 }
             })
